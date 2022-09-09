@@ -9,7 +9,12 @@ import RelatedVideos from "../video/related/RelatedVideos";
 
 export default function Video() {
   const { videoId } = useParams();
-  const { data: video, isError, isLoading } = useGetVideoQuery(videoId);
+  const {
+    data: video,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useGetVideoQuery(videoId);
   const { link, title } = video || {};
 
   // what to render
@@ -44,7 +49,11 @@ export default function Video() {
           <div className="col-span-full w-full space-y-8 lg:col-span-2">
             {content}
           </div>
-          <RelatedVideos />
+          {isSuccess ? (
+            <RelatedVideos title={title} />
+          ) : (
+            <Error message={"there are some error occurred !"}></Error>
+          )}
         </div>
       </div>
     </section>
