@@ -15,7 +15,7 @@ export default function Video() {
     isLoading,
     isSuccess,
   } = useGetVideoQuery(videoId);
-  const { link, title } = video || {};
+  const { link, title, id } = video || {};
 
   // what to render
   let content = null;
@@ -50,7 +50,7 @@ export default function Video() {
             {content}
           </div>
           {isSuccess ? (
-            <RelatedVideos title={title} />
+            <RelatedVideos title={title} id={id} />
           ) : (
             <Error message={"there are some error occurred !"}></Error>
           )}
