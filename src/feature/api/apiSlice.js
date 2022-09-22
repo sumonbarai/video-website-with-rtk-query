@@ -2,7 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:9000",
+    // baseUrl: "http://localhost:9000",
+    baseUrl: "https://pacific-mountain-56378.herokuapp.com",
   }),
   tagTypes: ["videos", "video", "relativeVideos"],
   endpoints: (builder) => ({
